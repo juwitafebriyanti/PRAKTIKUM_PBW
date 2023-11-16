@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>kalkulator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" href="icon.png" />
+    <style>
+      body {
+        background-image: url(bg\ foto.jpg);
+        background-size: 150rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Menghitung Modus, Mean, Max dan Min</h1>
+
+    <form>
+      <label for="data">Data:</label>
+      <input type="number" id="data" />
+      <button type="button" id="tambahData">Tambahkan</button>
+    </form>
+
+    <ul id="daftarData"></ul>
+
+    <p>Modus: <span id="hasil1"></span></p>
+    <p>Mean: <span id="hasil2"></span></p>
+    <p>Max: <span id="hasil3"></span></p>
+    <p>Min: <span id="hasil4"></span></p>
+
+    <script>
+      // Membuat variabel untuk menyimpan data
+      var data = [];
+
+      // Fungsi untuk menampilkan data di dalam daftar
+      function tampilkanData() {
+        // Kosongkan daftar
+        $('#daftarData').empty();
+
+        // Tampilkan setiap data di dalam daftar
+        for (var i = 0; i < data.length; i++) {
+          $('#daftarData').append('<li>' + data[i] + '</li>');
+        }
+      }
+
+      // Fungsi untuk menghitung dan menampilkan statistik
+      function hitungStatistik() {
+        // Hitung modus
+        var mode = 0;
+        var counts = {};
+        for (var i = 0; i < data.length; i++) {
+          var num = data[i];
+          counts[num] = counts[num] ? counts[num] + 1 : 1;
+          if (counts[num] > mode) {
+            mode = counts[num];
+          }
+        }
+        var modes = [];
+        for (var num in counts) {
+          if (counts.hasOwnProperty(num)) {
+            if (counts[num] === mode) {
+              modes.push(num);
+            }
+          }
+        }
+        $('#hasil1').text(modes.join(', '));
+
+        // Hitung mean
+        var sum = 0;
+        for (var i = 0; i < data.length; i++) {
+          sum += data[i];
+        }
+        var mean = sum / data.length;
+        $('#hasil2').text(mean.toFixed(2));
+
+        // Hitung max
+        var max = Math.max.apply(null, data);
+        $('#hasil3').text(max);
+
+        // Hitung min
+        var min = Math.min.apply(null, data);
+        $('#hasil4').text(min);
+      }
+
+      // Ketika tombol "Tambahkan" di klik
+      $('#tambahData').on('click', function () {
+        // Ambil nilai data dari input
+        var nilaiData = $('#data').val();
+
+        // Jika nilai data tidak kosong
+        if (nilaiData !== '') {
+          // Tambahkan data ke dalam array
+          data.push(parseFloat(nilaiData));
+
+          // Tampilkan data di dalam daftar
+          tampilkanData();
+
+          // Hitung dan tampilkan statistik
+          hitungStatistik();
+
+          // Kosongkan input
+          $('#data').val('');
+        }
+      });
+    </script>
+  </body>
+</html>

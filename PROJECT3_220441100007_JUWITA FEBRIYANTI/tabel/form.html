@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Data Barang</title>
+    <link rel="icon" href="icon form.png">
+  </head>
+  <body>
+    <table border="0" align="center" cellspacing="1" cellpadding="5">
+      <tr>
+        <th colspan="2">Form Data Barang</th>
+       </tr>
+      <tr>
+        <td>Nama Pelanggan</td>
+        <td>:&nbsp;<input type="text" name="nama" size="25" /></td>
+      </tr>
+      <tr>
+        <td>No HP</td>
+        <td>:&nbsp;<input type="text" name="no hp" size="25" /></td>
+      </tr>
+      <tr>
+        <td>Jenis Kelamin</td>
+        <td>
+          :&nbsp;<input type="radio" name="jk" value="Laki-laki" />Laki-laki
+          <input type="radio" name="jk" value="Perempuan" />Perempuan
+        </td>
+      </tr>
+      </tr>
+        <td>Alamat</td>
+        <td>:&nbsp;<textarea name="textarea" size="40"></textarea></td>
+      </tr>
+      <tr>
+        <td>Tipe Kipas:</td>
+        <td>:&nbsp;<select id="kategori" name="kategori">
+          <option value="Kipas Angin Lantai">Kipas Angin Lantai</option>
+          <option value="Kipas Angin Meja">Kipas Angin Meja</option>
+          <option value="Kipas Angin Dinding">Kipas Angin Dinding</option>
+          <option value="Kipas Angin Plafon">Kipas Angin Plafon</option>
+      </select></td>
+      <tr>
+        <td>Harga</td>
+        <td>:&nbsp;<input type="text" name="harga" size="25" /></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="submit" name="submit" value="Simpan">
+         <input type="reset" name="Hapus" value="Hapus">
+        </td>
+       </tr>
+    </table>
+  </body>
+</html>
